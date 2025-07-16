@@ -132,7 +132,5 @@ def main():
         sleep(random_wait)
 
 
-
-
 if __name__ == "__main__":
     main()
