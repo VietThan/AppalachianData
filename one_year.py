@@ -3,6 +3,7 @@ import logging
 import re 
 from random import randint
 from time import sleep
+import pathlib
 
 import requests
 
@@ -131,6 +132,20 @@ def main():
         logger.info(f"sleeping for {random_wait} seconds after processing {year = }")
         sleep(random_wait)
 
+def main2():
+    dir = pathlib.Path("data")
+    for item in dir.glob("*.html"):
+        name_without_suffix = item.name.replace(".html", "")
+        parts_split = name_without_suffix.split("_")
+
+        year = int(parts_split[0])
+        page_number = int(parts_split[1])
+        process_html(
+            html=item.read_text(),
+            year=year,
+            page_number=page_number
+        )
+
 
 if __name__ == "__main__":
-    main()
+    main2()
