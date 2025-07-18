@@ -118,6 +118,9 @@ def single_read_and_write(
 
 
 def read_and_write_to_output_file(output_file: io.TextIOWrapper):
+    output_file.write(
+        f"id|last_name|first_name|trail_name|state|country|hike_type"
+    )
     dir = pathlib.Path(OUTPUT_DIR)
     for item in dir.glob("*.ndjson"):
         single_read_and_write(
